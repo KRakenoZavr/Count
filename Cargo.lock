@@ -217,7 +217,7 @@ checksum = "cb581177a703987352eeabf6ae6989b1c6681e92ef8b9f284b6016ab90d3dc67"
 dependencies = [
  "prost",
  "prost-types",
- "tendermint-proto",
+ "tendermint-proto 0.31.1",
  "tonic",
 ]
 
@@ -579,6 +579,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "greenfield-sdk-proto"
+version = "0.19.0"
+source = "git+https://github.com/KRakenoZavr/greenfield-sdk-rust-v2?branch=main#8dfb7fceb0a2ecacf3b1902ce2cf312148e95b5f"
+dependencies = [
+ "prost",
+ "prost-types",
+ "tendermint-proto 0.32.0",
+ "tonic",
+]
+
+[[package]]
 name = "group"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -647,6 +658,7 @@ dependencies = [
  "cosmos-sdk-proto",
  "cosmrs",
  "env_logger",
+ "greenfield-sdk-proto",
  "prost",
  "prost-types",
  "rand_core",
@@ -1602,7 +1614,7 @@ dependencies = [
  "signature",
  "subtle",
  "subtle-encoding",
- "tendermint-proto",
+ "tendermint-proto 0.31.1",
  "time",
  "zeroize",
 ]
@@ -1626,6 +1638,24 @@ name = "tendermint-proto"
 version = "0.31.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a1f15666993e193fa4d2b2479aa1e4f1bbe41283c820812df8dd618f41ca3f7a"
+dependencies = [
+ "bytes",
+ "flex-error",
+ "num-derive",
+ "num-traits",
+ "prost",
+ "prost-types",
+ "serde",
+ "serde_bytes",
+ "subtle-encoding",
+ "time",
+]
+
+[[package]]
+name = "tendermint-proto"
+version = "0.32.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6ce23c8ff0e6634eb4c3c4aeed45076dc97dac91aac5501a905a67fa222e165b"
 dependencies = [
  "bytes",
  "flex-error",

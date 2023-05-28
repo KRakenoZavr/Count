@@ -12,3 +12,4 @@ mod staking;
 mod tx;
 mod upgrade;
 mod wasm;
+mod bucket;

@@ -2,6 +2,7 @@ pub mod any_helper;
 pub mod auth;
 pub mod authz;
 pub mod bank;
+pub mod bucket;
 pub mod distribution;
 pub mod evidence;
 pub mod feegrant;
@@ -32,6 +33,8 @@ use crate::client::tx::TxModule;
 use crate::client::upgrade::UpgradeModule;
 use crate::client::wasm::WasmModule;
 
+use crate::client::bucket::BucketModule;
+
 pub struct RpcClient {
     pub bank: BankModule,
     pub auth: AuthModule,
@@ -47,6 +50,7 @@ pub struct RpcClient {
     pub tx: TxModule,
     pub upgrade: UpgradeModule,
     pub wasm: WasmModule,
+    pub bucket: BucketModule,
 }
 
 impl RpcClient {
@@ -67,6 +71,7 @@ impl RpcClient {
             staking: StakingModule::new(rpc.clone()),
             tx: TxModule::new(rpc.clone()),
             upgrade: UpgradeModule::new(rpc.clone()),
+            bucket: BucketModule::new(rpc.clone()),
             wasm: WasmModule::new(rpc),
         })
     }
