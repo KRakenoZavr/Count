@@ -1,8 +1,9 @@
 use ::cosmos_sdk_proto;
 use ::tokio;
+use bank::balance::get_account_balance;
 use bucket::list::get_list_bucket;
-use hello::get_account_balance;
 
+mod bank;
 mod bucket;
 mod pagination;
 
