@@ -1,6 +1,10 @@
 use ::cosmos_sdk_proto;
 use ::tokio;
+use bucket::list::get_list_bucket;
 use hello::get_account_balance;
+
+mod bucket;
+mod pagination;
 
 #[tokio::main]
 async fn main() {
@@ -10,4 +14,8 @@ async fn main() {
     };
 
     let _res = get_account_balance(msg.address, msg.denom).await;
+    let _res = get_list_bucket().await;
 }
+
+// bucket list
+// storage list

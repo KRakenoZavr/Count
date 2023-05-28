@@ -1,16 +1,15 @@
 use reqwest::Client;
-use serde;
 use serde::{Deserialize, Serialize};
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[serde()]
 pub struct Coin {
     amount: String,
     denom: String,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[serde()]
 pub struct QueryBalance {
     balance: Coin,
 }
