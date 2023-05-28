@@ -2,12 +2,8 @@ use ::cosmos_sdk_proto;
 use ::cosmrs;
 use ::tokio;
 use ::tonic;
-use cosmos_sdk_proto::cosmos::bank::v1beta1::MsgSend;
+// use cosmos_sdk_proto::cosmos::bank::v1beta1::MsgSend;
 use reqwest::{Client, Version};
-use tonic::{
-    codegen::{http::uri::PathAndQuery, CompressionEncoding},
-    IntoRequest, Request,
-};
 
 // use hyper::client::connector::HttpConnector;
 // use hyper_openssl::HttpsConnector;
@@ -54,23 +50,30 @@ async fn main() {
     //     .unwrap();
 
     // async {
-    let client1 = Client::new();
+    // let client1 = Client::new();
 
-    let response = client1
-        .get("https://google.com")
-        // Causes an runtime error without native-tls-alpn feature
-        .version(Version::HTTP_2)
-        .send()
-        .await
-        .unwrap();
+    // let response = client1
+    //     .get("https://google.com")
+    //     // Causes an runtime error without native-tls-alpn feature
+    //     .version(Version::HTTP_2)
+    //     .send()
+    //     .await
+    //     .unwrap();
 
     // cosmos_sdk_proto::cosmos::auth::v1beta1::query_client::QueryClient::connect(dst)
 
+    println!("connecting...");
+
     let mut client = get_client().await;
+
+    println!("{:?}", client);
+
+    println!("connected");
 
     // client.<
 
     // client.
+
 
     let msg = cosmos_sdk_proto::cosmos::bank::v1beta1::QueryBalanceRequest {
         address: "0x1060D988E6b1235d1Bd0A01E6378A934b6aC763e".to_string(),
@@ -88,6 +91,8 @@ async fn main() {
     // client.send(req);
 
     // client.
+
+    println!("balance");
 
     let res = client.balance(msg).await.unwrap();
 
@@ -134,30 +139,33 @@ async fn get_client() -> cosmos_sdk_proto::cosmos::bank::v1beta1::query_client::
     .unwrap()
 }
 
-async fn kekwpek() {
-    // let dst = "https://gnfd-testnet-fullnode-tendermint-us.bnbchain.org:443";
+// bucket list
+// storage list
 
-    // let conn = tonic::transport::Endpoint::new(dst)
-    //     .unwrap()
-    //     .connect()
-    //     .await;
+// async fn kekwpek() {
+// let dst = "https://gnfd-testnet-fullnode-tendermint-us.bnbchain.org:443";
 
-    // let server = tonic::client::Grpc::new(conn);
+// let conn = tonic::transport::Endpoint::new(dst)
+//     .unwrap()
+//     .connect()
+//     .await;
 
-    // let request = cosmos_sdk_proto::cosmos::bank::v1beta1::QueryBalanceRequest {
-    //     address: "0x1060D988E6b1235d1Bd0A01E6378A934b6aC763e".to_string(),
-    //     denom: "BNB".to_string(),
-    // };
+// let server = tonic::client::Grpc::new(conn);
 
-    // server.unary(request, path, codec)
+// let request = cosmos_sdk_proto::cosmos::bank::v1beta1::QueryBalanceRequest {
+//     address: "0x1060D988E6b1235d1Bd0A01E6378A934b6aC763e".to_string(),
+//     denom: "BNB".to_string(),
+// };
 
-    // let codec = tonic::codec::ProstCodec::default();
-    // let path = http::uri::PathAndQuery::from_static("/cosmos.bank.v1beta1.Query/Balance");
+// server.unary(request, path, codec)
 
-    // let path = PathAndQuery::from_static("/cosmos.bank.v1beta1.Query/Balance");
+// let codec = tonic::codec::ProstCodec::default();
+// let path = http::uri::PathAndQuery::from_static("/cosmos.bank.v1beta1.Query/Balance");
 
-    // server.unary(request.into_request(), path, codec);
-}
+// let path = PathAndQuery::from_static("/cosmos.bank.v1beta1.Query/Balance");
+
+// server.unary(request.into_request(), path, codec);
+// }
 
 // use cosmos_sdk_proto::cosmos::bank::v1beta1::msg_client::MsgClient;
 
